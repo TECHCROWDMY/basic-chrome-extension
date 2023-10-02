@@ -1,0 +1,215 @@
+<div
+  class="yt_ai_summary_container theme_${e}"
+  id="yt_ai_summary_container"
+  data-chrome-id="${
+    chrome.runtime.id
+  }"
+>
+  <div id="yt_ai_summary_header" class="yt_ai_summary_header">
+    <a
+      id="glasp_yt_transcript_header_logo"
+      href="https://glasp.co/youtube-summary"
+      target="_blank"
+      style="width: 24px;height: 24px;"
+    >
+      <svg
+        width="25"
+        height="25"
+        viewBox="0 0 25 25"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <rect
+          width="25"
+          height="25"
+          rx="12.5"
+          fill="url(#paint0_linear_289_2185)"
+        />
+        <rect x="6" y="6" width="12.5" height="12.5" fill="url(#pattern0)" />
+        <defs>
+          <pattern
+            id="pattern0"
+            patternContentUnits="objectBoundingBox"
+            width="1"
+            height="1"
+          >
+            <use xlink:href="#image0_289_2185" transform="scale(0.00440529)" />
+          </pattern>
+          <linearGradient
+            id="paint0_linear_289_2185"
+            x1="5.13405"
+            y1="8.28811"
+            x2="17.6179"
+            y2="13.4498"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#5F6DED" />
+            <stop offset="1" stop-color="#49B9D9" />
+          </linearGradient>
+          <image
+            id="image0_289_2185"
+            width="227"
+            height="227"
+            xlink:href="data:image/png;base64,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"
+          />
+        </defs>
+      </svg>
+    </a>
+    <p class="yt_ai_summary_header_text">Transcript & Summary</p>
+    <div class="yt_ai_summary_header_actions">
+      <div
+        id="yt_ai_summary_header_summary"
+        class="yt_ai_summary_header_action_btn yt-summary-hover-el yt_ai_summary_icon icon_summary_hover_${e}"
+        data-hover-label="View AI Summary(Open New Tab)"
+      >
+        ${v(24, 24)}
+      </div>
+      <div
+        id="yt_ai_summary_header_track"
+        class="yt_ai_summary_header_action_btn yt-summary-hover-el icon_hover_${e}"
+        data-hover-label="Jump to Current Time"
+      >
+        <svg
+          style="filter: brightness(0.9);"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="6.25"
+            stroke="#828282"
+            stroke-width="1.5"
+          />
+          <rect
+            x="3.19995"
+            y="11.3999"
+            width="5"
+            height="1.2"
+            rx="0.6"
+            fill="#828282"
+          />
+          <rect
+            x="15.7"
+            y="11.3999"
+            width="5"
+            height="1.2"
+            rx="0.6"
+            fill="#828282"
+          />
+          <rect
+            x="11.3999"
+            y="8"
+            width="5"
+            height="1.2"
+            rx="0.6"
+            transform="rotate(-90 11.3999 8)"
+            fill="#828282"
+          />
+          <rect
+            x="11.3999"
+            y="21"
+            width="5"
+            height="1.2"
+            rx="0.6"
+            transform="rotate(-90 11.3999 21)"
+            fill="#828282"
+          />
+        </svg>
+      </div>
+      <div
+        id="yt_ai_summary_header_copy"
+        class="yt_ai_summary_header_action_btn yt-summary-hover-el icon_hover_${e}"
+        data-hover-label="Copy Transcript(${t})"
+      >
+        <svg
+          style="filter: brightness(0.95);"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7 6.6V5C7 4.44772 7.44772 4 8 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17H16.2308"
+            stroke="#828282"
+            stroke-width="1.5"
+          />
+          <rect
+            x="4.75"
+            y="6.75"
+            width="11.5"
+            height="13.5"
+            rx="1.25"
+            stroke="#828282"
+            stroke-width="1.5"
+          />
+        </svg>
+      </div>
+      <div
+        id="yt_ai_summary_header_setting"
+        class="yt_ai_summary_header_action_btn yt-summary-hover-el icon_hover_${e}"
+        data-hover-label="User Settings"
+      >
+        <svg
+          style="filter: brightness(0.9);"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.0834 4.5863L10.8202 4.72646L10.8202 4.72646L10.0834 4.5863ZM13.9162 4.5863L14.653 4.44613L14.653 4.44613L13.9162 4.5863ZM7.24473 5.9407L6.89115 6.60212L6.89115 6.60212L7.24473 5.9407ZM4.80072 8.91726L4.2235 9.39612L4.2235 9.39613L4.80072 8.91726ZM4.91172 9.05106L5.48895 8.57219L5.48895 8.57219L4.91172 9.05106ZM4.18516 12.1491L4.4954 12.8319L4.4954 12.8319L4.18516 12.1491ZM5.02392 15.9704L5.04832 16.72L5.04832 16.72L5.02392 15.9704ZM7.00308 18.4298L7.72976 18.6154L7.72976 18.6154L7.00308 18.4298ZM6.96871 18.5644L7.69539 18.7499L7.69539 18.7499L6.96871 18.5644ZM10.4269 20.1913L11.0332 20.6328L11.0332 20.6328L10.4269 20.1913ZM13.5727 20.1913L14.179 19.7498L14.179 19.7498L13.5727 20.1913ZM17.031 18.5644L16.3043 18.7499L16.3043 18.7499L17.031 18.5644ZM16.9966 18.4298L16.2699 18.6154L16.2699 18.6154L16.9966 18.4298ZM18.9758 15.9704L18.9514 16.72L18.9514 16.72L18.9758 15.9704ZM19.8145 12.1491L19.5043 12.8319L19.5043 12.8319L19.8145 12.1491ZM19.0879 9.05106L18.5107 8.57219L18.5107 8.5722L19.0879 9.05106ZM19.199 8.91726L19.7762 9.39613L19.7762 9.39613L19.199 8.91726ZM16.755 5.9407L16.4014 5.27927L16.4014 5.27927L16.755 5.9407ZM10.8202 4.72646C11.0679 3.42465 12.9318 3.42465 13.1795 4.72646L14.653 4.44613C14.096 1.51809 9.90368 1.51809 9.34665 4.44613L10.8202 4.72646ZM6.89115 6.60212C8.49654 7.46031 10.4794 6.51815 10.8202 4.72646L9.34665 4.44613C9.19557 5.24028 8.31426 5.662 7.59831 5.27927L6.89115 6.60212ZM5.37794 8.43839C4.54005 7.4284 5.70431 5.96767 6.89115 6.60212L7.59831 5.27927C4.98952 3.88469 2.31339 7.09369 4.2235 9.39612L5.37794 8.43839ZM5.48895 8.57219L5.37794 8.43839L4.2235 9.39613L4.3345 9.52993L5.48895 8.57219ZM4.4954 12.8319C6.13433 12.0873 6.65087 9.97277 5.48895 8.57219L4.3345 9.52993C4.85249 10.1543 4.63139 11.1226 3.87491 11.4663L4.4954 12.8319ZM4.99952 15.2208C4.32987 15.2426 3.90232 14.8175 3.78168 14.2636C3.66015 13.7056 3.87401 13.1143 4.4954 12.8319L3.87491 11.4663C2.51876 12.0825 2.06653 13.4371 2.31603 14.5828C2.56643 15.7325 3.54703 16.7689 5.04832 16.72L4.99952 15.2208ZM7.72976 18.6154C8.17903 16.8561 6.81001 15.1619 4.99952 15.2208L5.04832 16.72C5.86442 16.6935 6.47737 17.4573 6.2764 18.2442L7.72976 18.6154ZM7.69539 18.7499L7.72976 18.6154L6.2764 18.2442L6.24203 18.3788L7.69539 18.7499ZM9.82067 19.7498C9.04512 20.8147 7.36942 20.0264 7.69539 18.7499L6.24203 18.3788C5.50718 21.2563 9.28483 23.0336 11.0332 20.6328L9.82067 19.7498ZM14.179 19.7498C13.1023 18.2714 10.8973 18.2714 9.82066 19.7498L11.0332 20.6328C11.5108 19.9771 12.4889 19.9771 12.9665 20.6328L14.179 19.7498ZM16.3043 18.7499C16.6303 20.0264 14.9546 20.8147 14.179 19.7498L12.9665 20.6328C14.7148 23.0336 18.4925 21.2563 17.7576 18.3788L16.3043 18.7499ZM16.2699 18.6154L16.3043 18.7499L17.7576 18.3788L17.7233 18.2442L16.2699 18.6154ZM19.0002 15.2208C17.1897 15.1619 15.8206 16.8561 16.2699 18.6154L17.7233 18.2442C17.5223 17.4573 18.1353 16.6935 18.9514 16.72L19.0002 15.2208ZM19.5043 12.8319C20.1257 13.1143 20.3395 13.7056 20.218 14.2636C20.0974 14.8175 19.6698 15.2426 19.0002 15.2208L18.9514 16.72C20.4526 16.7689 21.4333 15.7325 21.6836 14.5828C21.9331 13.4371 21.4809 12.0825 20.1248 11.4663L19.5043 12.8319ZM18.5107 8.5722C17.3488 9.97277 17.8653 12.0873 19.5043 12.8319L20.1248 11.4663C19.3683 11.1226 19.1472 10.1543 19.6652 9.52993L18.5107 8.5722ZM18.6217 8.43839L18.5107 8.57219L19.6652 9.52993L19.7762 9.39613L18.6217 8.43839ZM17.1085 6.60212C18.2954 5.96768 19.4596 7.4284 18.6217 8.43839L19.7762 9.39613C21.6863 7.0937 19.0102 3.88469 16.4014 5.27927L17.1085 6.60212ZM13.1795 4.72646C13.5203 6.51815 15.5031 7.46031 17.1085 6.60212L16.4014 5.27927C15.6854 5.662 14.8041 5.24028 14.653 4.44613L13.1795 4.72646ZM14.3526 12.3299C14.3526 13.6907 13.2816 14.7615 12 14.7615V16.2615C14.1454 16.2615 15.8526 14.4833 15.8526 12.3299H14.3526ZM12 9.89819C13.2816 9.89819 14.3526 10.969 14.3526 12.3299H15.8526C15.8526 10.1764 14.1454 8.39819 12 8.39819V9.89819ZM9.6474 12.3299C9.6474 10.969 10.7184 9.89819 12 9.89819V8.39819C9.85457 8.39819 8.1474 10.1764 8.1474 12.3299H9.6474ZM12 14.7615C10.7184 14.7615 9.6474 13.6907 9.6474 12.3299H8.1474C8.1474 14.4833 9.85457 16.2615 12 16.2615V14.7615Z"
+            fill="#828282"
+          />
+        </svg>
+      </div>
+      <div
+        style="filter: brightness(0.9);"
+        id="yt_ai_summary_header_toggle"
+        class="yt_ai_summary_header_action_btn icon_hover_${e}"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 22 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.2447 9.9588C16.5376 9.6659 16.5376 9.19103 16.2447 8.89814C15.9518 8.60524 15.4769 8.60524 15.184 8.89814L16.2447 9.9588ZM6.81611 8.89814C6.52322 8.60524 6.04835 8.60524 5.75545 8.89814C5.46256 9.19103 5.46256 9.6659 5.75545 9.9588L6.81611 8.89814ZM11.7425 14.461L16.2447 9.9588L15.184 8.89814L10.6819 13.4003L11.7425 14.461ZM11.3183 13.4003L6.81611 8.89814L5.75545 9.9588L10.2576 14.461L11.3183 13.4003ZM10.6819 13.4003C10.8576 13.2246 11.1425 13.2246 11.3183 13.4003L10.2576 14.461C10.6677 14.871 11.3325 14.871 11.7425 14.461L10.6819 13.4003Z"
+            fill="#8B8B8B"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div
+    id="yt_ai_summary_body"
+    class="yt_ai_summary_body yt_ai_summary_body_${e}"
+  >
+    <div id="yt_ai_summary_lang_select" class="yt_ai_summary_lang_select"></div>
+    <div id="yt_ai_summary_text" class="yt_ai_summary_text"></div>
+  </div>
+  <div
+    id="yt_ai_summary_footer"
+    class="yt_ai_summary_body yt_ai_summary_body_${e}"
+    style="margin: 0;padding: 4px 0 0;"
+  >
+    <div style="margin: auto;width: 100%;text-align: center;font-size: 12px;">
+      Made with ❤️ by
+      <a
+        href="https://glasp.co?ref=yt_summary"
+        target="_blank"
+        style="color: rgb(6, 95, 212);text-decoration: none;"
+      >
+        Summies
+      </a>
+    </div>
+  </div>
+</div>;
