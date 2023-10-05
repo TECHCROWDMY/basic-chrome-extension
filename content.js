@@ -1,37 +1,3 @@
-  async function pasteIntoTextarea() {
-    const textarea = document.querySelector('#prompt-textarea');
-    const textFromClipboard = await navigator.clipboard.readText();
-    const textToPopulate = textFromClipboard.replace(/&#39;/g, "'") || 'default content';
-
-    setTimeout(() => {
-      if (textarea) {
-        textarea.textContent = textToPopulate;
-        textarea.focus();
-        textarea.value = 'Summarise this for me \n' + textToPopulate;
-        textarea.dispatchEvent(new Event("input", { bubbles: !0 }));
-        const runButton = document.getElementsByTagName("textarea")[0].nextElementSibling;
-        runButton.click();
-      } else {
-        console.error('Textarea element not found.');
-      }
-    }, 500);
-  }
-  function injectButton() {
-    setTimeout(() => {
-      const targetDiv = document.querySelector('ytd-watch-flexy #secondary');
-        if (targetDiv && "www.youtube.com" === window.location.hostname) {
-            const buttonElement = createButton();
-            targetDiv.insertBefore(buttonElement, targetDiv.firstChild);
-        } else if("chat.openai.com" === window.location.hostname){
-            pasteIntoTextarea()
-        }
-    }, 500); // Adjust the delay as needed (in milliseconds)
-  }
-  function getYouTubeVideoId(url) {
-    const urlParams = new URLSearchParams(new URL(url).search);
-    const videoId = urlParams.get('v');
-    return videoId ? videoId : null;
-  }
   function createButton() {
     const button = document.createElement('button');
     button.textContent = 'Summarise Video';
@@ -39,15 +5,21 @@
     button.addEventListener('click', () => { summariseContent() });
     return button;
   }
+  function injectButton() {
+    setTimeout(() => {
+        const targetDiv = document.querySelector('ytd-watch-flexy #secondary');
+        if (targetDiv && "www.youtube.com" === window.location.hostname) {
+            const buttonElement = createButton();
+            targetDiv.insertBefore(buttonElement, targetDiv.firstChild);
+        } else if ("chat.openai.com" === window.location.hostname) {
+            pasteIntoTextarea()
+        }
+    }, 500);
+  }
   async function fetchTranscript() {
-
+ 
     // 1. FETCH VIDEO_ID VIA URL
-    let videoId = ''
-    const videoUrlElement = document.querySelector('link[itemprop=url]');
-    if (videoUrlElement) {
-      const videoUrl = videoUrlElement.getAttribute('href');
-      videoId = getYouTubeVideoId(videoUrl);
-    } 
+    const videoId = new URL(window.location.href).searchParams.get('v');
 
     // 2. USE VIDEO_ID TO FETCH VIDEO DETAILS
     const t = await fetch("https://www.youtube.com/watch?v=" + videoId),
@@ -90,14 +62,12 @@
           return text;
         };
         const textContent = extractText(xmlDoc.documentElement);
-        console.error(textContent);
-
         return textContent;
       })
       .catch(error => console.error('Error fetching or parsing XML:', error));
-
   }
   function copyToClipboard(text) {
+
     const textarea = document.createElement('textarea');
     textarea.value = text;
     textarea.setAttribute('readonly', '');
@@ -108,12 +78,29 @@
     document.execCommand('copy');
     document.body.removeChild(textarea);
   }
+  async function pasteIntoTextarea() {
+    const textarea = document.querySelector('#prompt-textarea');
+    const textFromClipboard = await navigator.clipboard.readText();
+    const textToPopulate = textFromClipboard.replace(/&#39;/g, "'") || 'default content';
 
-  // STEP 1: INJECT BUTTON ON PAGE LOAD
-  window.addEventListener('load', () => {
-    injectButton();
-  });
-
+    setTimeout(() => {
+      if (textarea) {
+        textarea.textContent = textToPopulate;
+        textarea.focus();
+        textarea.value = 'Summarise this for me \n' + textToPopulate;
+        textarea.dispatchEvent(new Event("input", { bubbles: !0 }));
+        const runButton = document.getElementsByTagName("textarea")[0].nextElementSibling;
+        runButton.click();
+      } else {
+        console.error('Textarea element not found.');
+      }
+    }, 500);
+  }
+  function getYouTubeVideoId(url) {
+    const urlParams = new URLSearchParams(new URL(url).search);
+    const videoId = urlParams.get('v');
+    return videoId ? videoId : null;
+  }
   async function summariseContent() {
     // STEP 2 GET TRANSCRIPT ✅
     const transcript = await fetchTranscript();
@@ -121,9 +108,11 @@
     // STEP 3 COPY TRANSCRIPT TO CLIPBOARD ✅
     copyToClipboard(transcript);
 
-    // STEP 4 OPEN CHATGPT IN NEW TAB ✅
-    // Send a message to background script
+    // STEP 4 OPEN CHATGPT IN A NEW TAB ✅
     chrome.runtime.sendMessage({ type: 'OPEN_NEW_TAB' });
-
-}
-
+  }
+  
+  window.addEventListener('load', () => {
+    // STEP 1: INJECT BUTTON IN YOUTUBE ON PAGE LOAD
+    injectButton();
+  });
