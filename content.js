@@ -111,7 +111,6 @@
     // STEP 4 OPEN CHATGPT IN A NEW TAB ✅
     chrome.runtime.sendMessage({ type: 'OPEN_NEW_TAB' });
   }
-  
   window.addEventListener('load', () => {
     // STEP 1: INJECT BUTTON IN YOUTUBE ON PAGE LOAD
     injectButton();
